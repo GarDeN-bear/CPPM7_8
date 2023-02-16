@@ -3,7 +3,7 @@
 class bad_length : public std::exception {
 public:
 	const char* what() const override {
-		return "Вы ввели слово запретной длины! До свидания";
+		return "Вы ввели слово запретной длины! До свидания\n";
 	}
 };
 

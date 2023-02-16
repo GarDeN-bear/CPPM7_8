@@ -20,6 +20,9 @@ Triangle::Triangle(double a_, double b_, double c_, double A_, double B_, double
 	A = A_;
 	B = B_;
 	C = C_;
+	if (A + B + C != 180) {
+		throw FigureException("Ошибка создания фигуры. Причина: сумма углов не равна 180\n");
+	}
 }
 
 void Triangle::get_info() {
@@ -60,6 +63,12 @@ RightTriangle::RightTriangle(double a_, double b_, double c_, double A_, double 
 	A = A_;
 	B = B_;
 	C = 90;
+	if (A + B + C != 180) {
+		throw FigureException("Ошибка создания фигуры. Причина: сумма углов не равна 180\n");
+	}
+	if (C != 90) {
+		throw FigureException("Ошибка создания фигуры. Причина: угол C не равен 90\n");
+	}
 }
 
 IsoscelesTriangle::IsoscelesTriangle(double a_, double b_, double A_, double B_) {
@@ -70,6 +79,16 @@ IsoscelesTriangle::IsoscelesTriangle(double a_, double b_, double A_, double B_)
 	A = A_;
 	B = B_;
 	C = A;
+	if (A + B + C != 180) {
+		throw FigureException("Ошибка создания фигуры. Причина: сумма углов не равна 180\n");
+	}
+	if (a != c) {
+		throw FigureException("Ошибка создания фигуры. Причина: стороны a и c не равны\n");
+	}
+	if (A != C) {
+		throw FigureException("Ошибка создания фигуры. Причина: углы A и C не равны\n");
+	}
+
 }
 
 EquilateralTriangle::EquilateralTriangle(double a_, double A_) {
@@ -80,4 +99,10 @@ EquilateralTriangle::EquilateralTriangle(double a_, double A_) {
 	A = A_;
 	B = A;
 	C = A;
+	if (A + B + C != 180) {
+		throw FigureException("Ошибка создания фигуры. Причина: сумма углов не равна 180\n");
+	}
+	if (A != 60 || B != 60 || C != 60) {
+		throw FigureException("Ошибка создания фигуры. Причина: не все углы равны 60\n");
+	}
 }
